@@ -1,0 +1,32 @@
+# Dependencies and build outputs
+node_modules/
+dist/
+build/
+release/
+
+# Runtime databases
+data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Local historical backup
+README.ORIGINAL.LOCAL.md
+
+# Local logs
+*.log
+npm-debug.log*
+
+# Track application seed constants only.
+!/src/data/
+/src/data/*
+!/src/data/seed.ts

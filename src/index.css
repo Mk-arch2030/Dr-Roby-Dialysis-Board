@@ -1,0 +1,137 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Cairo", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  --color-brand-50: #eef8f6;
+  --color-brand-100: #d5efe9;
+  --color-brand-200: #aadecf;
+  --color-brand-300: #78c8b7;
+  --color-brand-400: #43ab99;
+  --color-brand-500: #219387;
+  --color-brand-600: #14766e;
+  --color-brand-700: #125e58;
+  --color-brand-800: #134b47;
+  --color-brand-900: #133e3b;
+  --color-brand-950: #062624;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: #f4f6f8;
+    color: #0f172a;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .dark body {
+    background-color: #0b1416;
+    color: #e6edf0;
+  }
+
+  button {
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  input,
+  select,
+  textarea {
+    font-family: inherit;
+  }
+
+  ::selection {
+    background-color: var(--color-brand-200);
+    color: var(--color-brand-900);
+  }
+}
+
+@layer components {
+  .num {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  .card-surface {
+    @apply rounded-2xl border border-slate-200/80 bg-white;
+    box-shadow: 0 18px 40px -32px rgba(15, 23, 42, 0.45);
+  }
+
+  .dark .card-surface {
+    @apply border-slate-700/70 bg-slate-900/70;
+    box-shadow: 0 18px 40px -30px rgba(0, 0, 0, 0.8);
+  }
+
+  .field {
+    @apply w-full rounded-xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-800 outline-none transition;
+  }
+
+  .field:focus {
+    @apply border-brand-400 ring-2 ring-brand-100;
+  }
+
+  .dark .field {
+    @apply border-slate-700 bg-slate-950/60 text-slate-100;
+  }
+
+  .dark .field:focus {
+    @apply border-brand-400 ring-brand-900;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-3.5 py-2 text-sm font-semibold transition active:scale-[0.985];
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.82);
+  }
+}
+
+.pulse-dot {
+  animation: soft-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise 0.28s ease-out both;
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.24s ease-out both;
+}
